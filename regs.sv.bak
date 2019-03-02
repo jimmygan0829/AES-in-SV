@@ -1,0 +1,38 @@
+//16 32-bit registiers
+module regs
+(	input logic Clk, Reset, LD_REG,
+	input logic [4:0] DRMUX_OUT, SR1MUX_OUT, SR2,
+   input logic [31:0]  D_in,
+   output logic [31:0]  SR1_OUT, SR2_OUT);
+
+logic[31:0] din[16];
+	
+always_ff @ (posedge Clk)
+begin
+	if (Reset) //reset registers
+	begin
+		din[0] = 16'h0000;
+		din[1] = 16'h0000;
+		din[2] = 16'h0000;
+		din[3] = 16'h0000;
+		din[4] = 16'h0000;
+		din[5] = 16'h0000;
+		din[6] = 16'h0000;
+		din[7] = 16'h0000;
+		din[8] = 16'h0000;
+		din[9] = 16'h0000;
+		din[10] = 16'h0000;
+		din[11] = 16'h0000;
+		din[12] = 16'h0000;
+		din[13] = 16'h0000;
+		din[14] = 16'h0000;
+		din[15] = 16'h0000;
+	end
+	else if (LD_REG)
+		din[DRMUX_OUT] = D_in;
+end
+
+assign SR1_OUT = din[SR1MUX_OUT];
+assign SR2_OUT = din[SR2];
+
+endmodule

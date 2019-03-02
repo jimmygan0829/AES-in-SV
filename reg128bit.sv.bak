@@ -1,0 +1,16 @@
+module reg_128(
+	input logic clk, reset, load,
+	input logic [127:0] din,
+	output logic [127:0] dout
+	);
+
+always_ff @ (posedge clk)
+begin
+	if(reset)
+		dout<=128'h0;
+	else if(load)
+		dout<=din;
+		
+end
+
+endmodule
