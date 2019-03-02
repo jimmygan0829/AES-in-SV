@@ -1,0 +1,9 @@
+module addroundkey(
+	input logic [127:0] msg,key,
+	output logic [127:0] mxhmz
+	);
+
+	assign mxhmz = msg^key;
+
+endmodule
+
