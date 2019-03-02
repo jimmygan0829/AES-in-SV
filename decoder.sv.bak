@@ -1,0 +1,5 @@
+module decoder(
+	input logic [31:0] din,
+	input logic [1:0] sel,
+	output logic [31:0] dout0,dout1,dout2,dout3
+	);
